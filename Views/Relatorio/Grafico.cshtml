@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Grafico";
+}
+
+<script>https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.min.js</script>
+
+<h2>Total de vendas por produto</h2>
+<hr />
+
+<div>
+        <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [@Html.Raw(ViewBag.Labels)],
+            datasets: [{               
+                backgroundColor: [@Html.Raw(ViewBag.Cores)],             
+                borderColor: ['#fff'],
+                data: [@Html.Raw(ViewBag.Valores)]
+            }]
+        },
+        options: {}
+
+    });
+</script>
